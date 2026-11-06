@@ -14,10 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Package main is the entrypoint for myapp-2.
 package main
 
-import "log"
+import (
+	"log"
+
+	"github.com/thockin/go-build-template/pkg/version"
+)
 
 func main() {
-	log.Printf("hello, world!")
+	log.Printf("version: %s\n", version.Version)
 }

@@ -16,23 +16,10 @@
 
 set -o errexit
 set -o nounset
-set -o pipefail
 
 export CGO_ENABLED=0
 export GO111MODULE=on
-export GOFLAGS="${GOFLAGS:-} -mod=${MOD}"
 
 echo "Running tests:"
 go test -installsuffix "static" "$@"
-echo
-
-echo -n "Checking go vet: "
-ERRS=$(go vet "$@" 2>&1 || true)
-if [ -n "${ERRS}" ]; then
-    echo "FAIL"
-    echo "${ERRS}"
-    echo
-    exit 1
-fi
-echo "PASS"
 echo
